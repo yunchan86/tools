@@ -24,5 +24,6 @@
   </dependencies>
   <modules>
     <module>utuky-commons-tools</module>
+    <module>utuky-tools-generalcode</module>
   </modules>
 </project>

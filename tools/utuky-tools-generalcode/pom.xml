@@ -7,10 +7,10 @@
     <artifactId>tools</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.utuky.commons.tools</groupId>
-  <artifactId>utuky-commons-tools</artifactId>
+  <groupId>com.utuky</groupId>
+  <artifactId>utuky-tools-generalcode</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>utuky-commons-tools</name>
+  <name>utuky-tools-generalcode</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,27 +18,11 @@
   <dependencies>
   
   	<dependency>
-	    <groupId>com.alibaba</groupId>
-	    <artifactId>fastjson</artifactId>
-	    <version>1.2.38</version>
+		<groupId>com.utuky.commons.tools</groupId>
+		<artifactId>utuky-commons-tools</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
 	
-	<dependency>
-		<groupId>org.apache.httpcomponents</groupId>
-		<artifactId>httpmime</artifactId>
-		<version>4.3</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.httpcomponents</groupId>
-		<artifactId>httpclient</artifactId>
-		<version>4.3.4</version>
-	</dependency>
-	<dependency>
-		<groupId>commons-httpclient</groupId>
-		<artifactId>commons-httpclient</artifactId>
-		<version>3.1</version>
-	</dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
