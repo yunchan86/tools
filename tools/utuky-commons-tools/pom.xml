@@ -17,12 +17,18 @@
   </properties>
   <dependencies>
   
+  <!-- fastjson -->
   	<dependency>
 	    <groupId>com.alibaba</groupId>
 	    <artifactId>fastjson</artifactId>
 	    <version>1.2.38</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.1</version>
+	</dependency>
 	<dependency>
 		<groupId>org.apache.httpcomponents</groupId>
 		<artifactId>httpmime</artifactId>
@@ -37,6 +43,18 @@
 		<groupId>commons-httpclient</groupId>
 		<artifactId>commons-httpclient</artifactId>
 		<version>3.1</version>
+	</dependency>
+	
+	<!-- Excel文件读写 -->
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi</artifactId>
+	    <version>3.12</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi-ooxml</artifactId>
+	    <version>3.12</version>
 	</dependency>
 
     <dependency>

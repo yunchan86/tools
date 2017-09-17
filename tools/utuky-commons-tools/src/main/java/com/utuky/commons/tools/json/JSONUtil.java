@@ -1,4 +1,4 @@
-package org.utuky.commons.base.json;
+package com.utuky.commons.tools.json;
 
 import java.lang.reflect.Type;
 
@@ -12,7 +12,7 @@ import com.alibaba.fastjson.parser.Feature;
  */
 public class JSONUtil {
 
-	public String obj2Json(Object obj) {
+	public static String obj2Json(Object obj) {
 		return JSON.toJSONString(obj);
 	}
 	
