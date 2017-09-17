@@ -3,9 +3,7 @@ package com.utuky.commons.tools.address;
 import java.net.URLEncoder;
 import java.util.List;
 
-import com.google.gson.reflect.TypeToken;
-import com.ll.commons.commonlib.http.HttpGetUtil;
-import com.ll.commons.commonlib.json.JsonUtil;
+import com.utuky.commons.tools.http.HttpGetUtil;
 
 /**
  * @since 2017-09-17
@@ -45,7 +43,7 @@ public class BaiduAddressUtil {
 		String url = String.format(DETAIL_URL,uid);
 		String respdata = HttpGetUtil.send(url, null, "", 20000);
 		System.out.println(respdata);
-		RespBaiduAddress<BaiduAddress> result = JsonUtil.json2Obj(respdata, new TypeToken<RespBaiduAddress<BaiduAddress>>() {
+		RespBaiduAddress<BaiduAddress> result = JSONUtil.json2Obj(respdata, new TypeToken<RespBaiduAddress<BaiduAddress>>() {
 		}.getType());
 		return result;
 	}
