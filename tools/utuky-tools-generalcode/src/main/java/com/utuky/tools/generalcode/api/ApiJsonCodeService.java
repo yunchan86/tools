@@ -2,6 +2,8 @@ package com.utuky.tools.generalcode.api;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.utuky.commons.tools.json.JSONUtil;
 import com.utuky.commons.tools.utils.ObjectTypeUtil;
 import com.utuky.tools.generalcode.model.RespCodeEnum;
@@ -29,7 +31,17 @@ public class ApiJsonCodeService {
 	
 	protected String makeClassCode(Map<String,Object> classAttributeMap,Map<String,String> config) {
 		StringBuffer sb = new StringBuffer();
-		
+		String privateStr = "private";
+		String symbol = ";";
+		String split = " ";
+		String br = "\n";
+		for(String key:classAttributeMap.keySet()) {
+			String type = this.getObjectType(classAttributeMap.get(key));
+			if(StringUtils.isBlank(type)) {
+				
+			}
+			sb.append(privateStr+split+type+split+key+split+symbol+br) ;
+		}
 		return sb.toString();
 	}
 	
