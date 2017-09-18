@@ -1,5 +1,6 @@
 package com.utuky.tools.generalcode.api;
 
+import java.io.File;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -43,6 +44,38 @@ public class ApiJsonCodeService {
 			sb.append(privateStr+split+type+split+key+split+symbol+br) ;
 		}
 		return sb.toString();
+	}
+	
+	protected String getPackageCode(String packagename) {
+		return "package "+packagename + " ;" ;
+	}
+	
+	protected String getImportClassname(String packagename,String classname) {
+		String result = "";
+		if(StringUtils.isNotBlank(packagename)) result = packagename+"."+classname;
+		else result = classname ;
+		result = "import "+result ;
+		return result ;
+	}
+	
+	protected String getClassCode() {
+		StringBuffer result = new StringBuffer();
+		
+		return result.toString();
+	}
+	
+	private String getGetMethodCode() {
+		StringBuffer result = new StringBuffer() ;
+		
+		return result.toString() ;
+	}
+	
+	protected boolean createCodeFile(String code,String rootpath,String packagename,String classname) {
+		boolean b = false ;
+		File path = new File(rootpath);
+		//TODO
+		
+		return b ;
 	}
 	
 	protected String getObjectType(Object obj) {

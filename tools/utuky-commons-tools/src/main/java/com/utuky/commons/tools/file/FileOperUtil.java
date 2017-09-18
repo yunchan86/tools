@@ -43,4 +43,13 @@ public class FileOperUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	public static boolean makeDirectory(String path) {
+		File file = new File(path);
+		// 如果文件夹不存在则创建
+		if (!file.exists() || !file.isDirectory()) {
+			file.mkdirs();
+		}
+		return false;
+	}
 }
