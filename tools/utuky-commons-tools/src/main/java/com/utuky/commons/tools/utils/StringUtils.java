@@ -13,4 +13,12 @@ public class StringUtils {
 		if(isBlank(str)) b = false ;
 		return b ;
 	}
+	
+	public static String firstUpperCase(String str) {
+		String result = str ;
+		if(str==""||"".equals(str.trim())) return null ;
+		String b = str.substring(0, 1) ;
+		str.replaceFirst(b,b.toUpperCase() ) ;
+		return result ;
+	}
 }

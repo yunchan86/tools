@@ -3,10 +3,9 @@ package com.utuky.tools.generalcode.api;
 import java.io.File;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.utuky.commons.tools.json.JSONUtil;
 import com.utuky.commons.tools.utils.ObjectTypeUtil;
+import com.utuky.commons.tools.utils.StringUtils;
 import com.utuky.tools.generalcode.model.RespCodeEnum;
 import com.utuky.tools.generalcode.model.RespData;
 
@@ -58,15 +57,43 @@ public class ApiJsonCodeService {
 		return result ;
 	}
 	
-	protected String getClassCode() {
+	protected String getClassCode(String classname,Map<String,String> classAttributeConfig) {
 		StringBuffer result = new StringBuffer();
-		
+		String tabs = "";
+		result.append(tabs+"public class "+classname+" {\n") ;
+		if(classAttributeConfig!=null) {
+			for(String attribute:classAttributeConfig.keySet()) {
+				String attributeType = classAttributeConfig.get(attribute);
+				result.append(tabs+"\t"+"private "+attributeType+" "+attribute+";\n") ;
+			}
+			for(String attribute:classAttributeConfig.keySet()) {
+				String attributeType = classAttributeConfig.get(attribute);
+				String getMethod = getGetMethodCode(attribute,attributeType);
+				String setMethod = getGetMethodCode(attribute,attributeType);
+				result.append(getMethod);
+				result.append(setMethod);
+			}
+		}
+		result.append("}\n");
 		return result.toString();
 	}
 	
-	private String getGetMethodCode() {
+	private String getGetMethodCode(String attribute,String attributeType) {
 		StringBuffer result = new StringBuffer() ;
-		
+		String tabs = "";
+		String newAttribute = StringUtils.firstUpperCase(attribute);
+		result.append(tabs+"public "+attributeType+" get"+newAttribute+"() {"+"\n") ;
+		result.append(tabs+"\t"+"return"+attribute+";\n") ;
+		result.append(tabs+"}\n") ;
+		return result.toString() ;
+	}
+	private String getSetMethodCode(String attribute,String attributeType) {
+		StringBuffer result = new StringBuffer() ;
+		String tabs = "";
+		String newAttribute = StringUtils.firstUpperCase(attribute);
+		result.append(tabs+"public void set"+newAttribute+"("+attributeType+" "+attribute+") {"+"\n") ;
+		result.append(tabs+"\t"+"this."+attribute+"="+attribute+";\n") ;
+		result.append(tabs+"}\n") ;
 		return result.toString() ;
 	}
 	
