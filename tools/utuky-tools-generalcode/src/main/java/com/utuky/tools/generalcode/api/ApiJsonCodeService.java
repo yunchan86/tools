@@ -53,7 +53,7 @@ public class ApiJsonCodeService {
 		String result = "";
 		if(StringUtils.isNotBlank(packagename)) result = packagename+"."+classname;
 		else result = classname ;
-		result = "import "+result ;
+		result = "import "+result + ";\n" ;
 		return result ;
 	}
 	
