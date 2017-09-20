@@ -1,6 +1,7 @@
 package com.utuky.tools.generalcode.api;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.utuky.commons.tools.json.JSONUtil;
@@ -31,30 +32,34 @@ public class ApiJsonCodeService {
 	
 	protected String makeClassCode(Map<String,Object> classAttributeMap,Map<String,String> config) {
 		StringBuffer sb = new StringBuffer();
-		String privateStr = "private";
-		String symbol = ";";
-		String split = " ";
-		String br = "\n";
+		Map<String,String> attributeMap = new HashMap<String,String>();
 		for(String key:classAttributeMap.keySet()) {
 			String type = this.getObjectType(classAttributeMap.get(key));
-			if(StringUtils.isBlank(type)) {
-				
+			if(StringUtils.isBlank(type)) {//非基本数据类型
+				//do nothing
+			}else {
+				if(config==null || config.get(key)==null) type = StringUtils.firstUpperCase(type);
+				type = StringUtils.firstUpperCase(config.get(key)) ;
 			}
-			sb.append(privateStr+split+type+split+key+split+symbol+br) ;
+			attributeMap.put(key, type);
 		}
+		String classname = "";
+		sb.append(getClassCode(classname,attributeMap)) ;
 		return sb.toString();
 	}
 	
 	protected String getPackageCode(String packagename) {
-		return "package "+packagename + " ;" ;
+		StringBuffer result = new StringBuffer();
+		if(StringUtils.isNotBlank(packagename)) result.append("package "+packagename + ";\n" ) ;
+		return result.toString();
 	}
 	
 	protected String getImportClassname(String packagename,String classname) {
-		String result = "";
-		if(StringUtils.isNotBlank(packagename)) result = packagename+"."+classname;
-		else result = classname ;
-		result = "import "+result + ";\n" ;
-		return result ;
+		StringBuffer result = new StringBuffer();
+		if(StringUtils.isBlank(classname)) result.append("\n");
+		else if(StringUtils.isNotBlank(packagename)) result.append("import "+packagename+"."+classname+";\n");
+		else result.append("\n");
+		return result.toString() ;
 	}
 	
 	protected String getClassCode(String classname,Map<String,String> classAttributeConfig) {
@@ -69,7 +74,7 @@ public class ApiJsonCodeService {
 			for(String attribute:classAttributeConfig.keySet()) {
 				String attributeType = classAttributeConfig.get(attribute);
 				String getMethod = getGetMethodCode(attribute,attributeType);
-				String setMethod = getGetMethodCode(attribute,attributeType);
+				String setMethod = getSetMethodCode(attribute,attributeType);
 				result.append(getMethod);
 				result.append(setMethod);
 			}

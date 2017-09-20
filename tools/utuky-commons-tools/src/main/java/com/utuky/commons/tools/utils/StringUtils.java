@@ -21,4 +21,12 @@ public class StringUtils {
 		str.replaceFirst(b,b.toUpperCase() ) ;
 		return result ;
 	}
+	
+	public static String firstLowerCase(String str) {
+		String result = str ;
+		if(str==""||"".equals(str.trim())) return null ;
+		String b = str.substring(0, 1) ;
+		str.replaceFirst(b,b.toLowerCase()) ;
+		return result ;
+	}
 }

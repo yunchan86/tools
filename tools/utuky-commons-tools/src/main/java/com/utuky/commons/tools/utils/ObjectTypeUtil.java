@@ -1,5 +1,7 @@
 package com.utuky.commons.tools.utils;
 
+import java.util.Date;
+
 public class ObjectTypeUtil {
 
 	public static String getBaseType(Object obj) {
@@ -18,6 +20,8 @@ public class ObjectTypeUtil {
 			result = "Character" ;
 		}else if(obj instanceof Boolean) {
 			result = "Boolean" ;
+		}else if(obj instanceof Date){
+			result = "Date";
 		}else {
 			Class<? extends Object> type = obj.getClass();
 			if(type == int.class) {
