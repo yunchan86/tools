@@ -42,4 +42,10 @@ public class ObjectTypeUtil {
 		}
 		return result ;
 	}
+	
+	public static String getCollectionType(Object obj) {
+		String result = null ;
+		
+		return result ;
+	}
 }

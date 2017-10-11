@@ -30,7 +30,8 @@ public class ApiJsonCodeService {
 		return result;
 	}
 	
-	protected String makeClassCode(Map<String,Object> classAttributeMap,Map<String,String> config) {
+	protected Map<String,String> makeClassCode(Map<String,Object> classAttributeMap,Map<String,String> config) {
+		Map<String,String> result = new HashMap<String,String>();
 		StringBuffer sb = new StringBuffer();
 		Map<String,String> attributeMap = new HashMap<String,String>();
 		for(String key:classAttributeMap.keySet()) {
@@ -43,9 +44,10 @@ public class ApiJsonCodeService {
 			}
 			attributeMap.put(key, type);
 		}
-		String classname = "";
+		String classname = config.get("classname");
 		sb.append(getClassCode(classname,attributeMap)) ;
-		return sb.toString();
+		result.put(classname, sb.toString()) ;
+		return result ;
 	}
 	
 	protected String getPackageCode(String packagename) {

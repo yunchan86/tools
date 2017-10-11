@@ -25,5 +25,6 @@
   <modules>
     <module>utuky-commons-tools</module>
     <module>utuky-tools-generalcode</module>
+    <module>utuky-third-adapter</module>
   </modules>
 </project>
