@@ -7,7 +7,7 @@
     <artifactId>tools</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.utuky</groupId>
+  <groupId>com.utuky.lucene</groupId>
   <artifactId>utuky-lucene-commons</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>utuky-lucene-commons</name>
@@ -15,6 +15,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <lucene.version>7.1.0</lucene.version>
+    <utuky.version>0.0.1-SNAPSHOT</utuky.version>
   </properties>
   <dependencies>
   	<!-- Lucene -->
@@ -58,6 +59,13 @@
 	    <groupId>org.apache.lucene</groupId>
 	    <artifactId>lucene-highlighter</artifactId>
 	    <version>${lucene.version}</version>
+	</dependency>
+	
+	<!-- utuky -->
+    <dependency>
+	    <groupId>com.utuky.commons.tools</groupId>
+	    <artifactId>utuky-commons-tools</artifactId>
+	    <version>${utuky.version}</version>
 	</dependency>
     
     <dependency>
