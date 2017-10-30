@@ -10,6 +10,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.IndexableField;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
@@ -64,6 +65,29 @@ public class IndexFileWrite {
 		}
 	}
 	
+	protected static void updateIndex(String indexpath,IndexWriterConfig iwc,Term term,List<IndexableField> indexRowData) {
+		IndexWriter indexWriter = null;  
+		try {
+			if(StringUtils.isBlank(indexpath)) return ;
+			if(CollectionUtils.isBlank(indexRowData)) return ;
+			if(term==null) return ;
+			Directory directory = getDirectory(indexpath); 
+			indexWriter = new IndexWriter(directory, iwc);
+			Document doc = createIndexDocument(indexRowData) ;
+			indexWriter.updateDocument(term, doc);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {  
+	            if (indexWriter != null) {  
+	                indexWriter.close();  
+	            }  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        }  
+		}
+	}
 	protected static Directory getDirectory(String indexpath) {
 		Path path = Paths.get(indexpath) ;
 		return  getDirectory(path) ;
