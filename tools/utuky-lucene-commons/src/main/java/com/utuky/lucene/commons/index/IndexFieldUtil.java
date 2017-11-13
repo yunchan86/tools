@@ -42,4 +42,14 @@ public class IndexFieldUtil {
 		}
 		return field ;
 	}
+	
+	public IndexableField createField(Object[] fieldparams) {
+		IndexableField field = null ;
+		String type = (String)fieldparams[0];
+		String indexname = (String)fieldparams[1];
+		Object value = (Object)fieldparams[2];
+		Store store = (Store)fieldparams[3];
+		field = this.createField(type, indexname, value, store) ;
+		return field ;
+	}
 }
