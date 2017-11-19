@@ -17,10 +17,16 @@ import org.apache.lucene.store.FSDirectory;
 import com.utuky.commons.tools.utils.CollectionUtils;
 import com.utuky.commons.tools.utils.StringUtils;
 import com.utuky.lucene.commons.index.FacIndexWriterConfig;
+import com.utuky.lucene.commons.index.IndexFieldUtil;
 
 public class IndexFileWrite {
 
-	public static void createIndex(String indexpath,String analyzerType) {
+	public static void createIndex(String indexpath,String analyzerType,List<Object[]> fields) {
+		if(fields==null || fields.isEmpty()) return ;
+		List<IndexableField> list = new ArrayList<IndexableField>();
+		for(Object[] item:fields) {
+			//IndexFieldUtil.r
+		}
 		IndexWriterConfig iwc = FacIndexWriterConfig.getInstance(analyzerType) ;
 		
 	}
