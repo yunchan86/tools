@@ -27,5 +27,6 @@
     <module>utuky-tools-generalcode</module>
     <module>utuky-third-adapter</module>
     <module>utuky-lucene-commons</module>
+    <module>utuky-activemq-commons</module>
   </modules>
 </project>
